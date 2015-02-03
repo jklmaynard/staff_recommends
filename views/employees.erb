@@ -3,7 +3,7 @@
 <% if @employee.books().any? %>
   <% @employee.books().each() do |book| %>
     <ul>
-      <li><a href="/books/<%= book.id() %>"><%= book.name() %></a></li>  
+      <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %></li>  
     </ul>
   <% end %>
 <% else %>
@@ -12,8 +12,10 @@
 <br>
 <form action="/add_books" method="post">
   <input id="employee_id" name="employee_id" type="hidden" value="<%= @employee.id() %>">
-  <label for="name">Add a Book</label>
+  <label for="name">Title</label>
   <input type="text" name="name" id="name">
+  <label for="author">Author</label>
+  <input type="text" name="author" id="author">
   <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
 </form>
 <br>
