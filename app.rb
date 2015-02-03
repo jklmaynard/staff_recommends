@@ -11,8 +11,8 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 # /INDEX routes
 
 get("/") do 
-  "Hello world!"
   @employees = Employee.all()
+  @books = Book.all()
   erb(:index)
 end
 
@@ -42,6 +42,19 @@ end
 delete("/employees/:id") do
   @employee = Employee.find(params["id"])
   @employee.destroy
+  redirect("/")
+end
+
+# /BOOKS/:id routes
+
+get("/books/:id") do
+  @book = Book.find(params["id"])
+  erb(:books)
+end
+
+delete("/books/:id") do
+  @book = Book.find(params["id"])
+  @book.destroy
   redirect("/")
 end
 

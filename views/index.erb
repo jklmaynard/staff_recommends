@@ -14,5 +14,16 @@
       <%= employee.employee() %>
     </li>
   <% end %>
-  
+</ul>
+
+<h2> . . . Or . . . </h2>
+
+<h3> Go to the Books! </h3>
+<ul>
+  <% @books.each() do |book| %>
+  <li style="margin: 5px auto;">
+    <a href="/books/<%= book.id() %>"><button type = "submit" class="btn btn-sm btn-success">Edit</button></a>
+    <%= book.name() %>
+  </li>
+  <% end %>
 </ul>
