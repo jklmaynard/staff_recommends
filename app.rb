@@ -8,6 +8,8 @@ end
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+# /INDEX routes
+
 get("/") do 
   "Hello world!"
   @employees = Employee.all()
@@ -21,6 +23,15 @@ post("/employee") do
   erb(:index)
 end
 
-get("/index") do
-  "Hello World!"
+# /EMPLOYEE/:id routes
+
+get("/employees/:id") do
+  @employee = Employee.find(params["id"])
+  erb(:employees)
+end
+
+delete("/employees/:id") do
+  @employee = Employee.find(params["id"])
+  @employee.destroy
+  redirect("/")
 end
