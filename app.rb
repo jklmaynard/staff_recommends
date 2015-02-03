@@ -20,6 +20,7 @@ post("/employee") do
   name = params.fetch("name")
   @employee = Employee.create({ :employee => name })
   @employees = Employee.all()
+  @books = Book.all()
   erb(:index)
 end
 
