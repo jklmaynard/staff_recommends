@@ -30,8 +30,18 @@ get("/employees/:id") do
   erb(:employees)
 end
 
+post("/add_books") do
+  name = params.fetch("name")
+  employee_id = params.fetch("employee_id")
+  @book = Book.create({ :name => name })
+  @books = Book.all()
+  @employee = Employee.find(employee_id)
+  erb(:employees)
+end
+
 delete("/employees/:id") do
   @employee = Employee.find(params["id"])
   @employee.destroy
   redirect("/")
 end
+

@@ -1,8 +1,22 @@
 <h1>Here are the books <%= @employee.employee() %> recommends!</h1>
 
-
-
-
+<% if @employee.books().any? %>
+  <% @employee.books().each() do |book| %>
+    <ul>
+      <li><a href="/books/<%= book.id() %>"><%= book.name() %></a></li>  
+    </ul>
+  <% end %>
+<% else %>
+  <p>No books have been added!</p>
+<% end %>
+<br>
+<form action="/add_books" method="post">
+  <input id="employee_id" name="employee_id" type="hidden" value="<%= @employee.id() %>">
+  <label for="name">Add a Book</label>
+  <input type="text" name="name" id="name">
+  <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
+</form>
+<br>
 
 <form action="/employees/<%= @employee.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
