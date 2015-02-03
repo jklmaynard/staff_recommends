@@ -32,8 +32,10 @@ get("/employees/:id") do
 end
 
 post("/add_books") do
+  name = params.fetch("name")
+  author = params.fetch("author")
   employee_id = params.fetch("employee_id")
-  @book = Book.create({ :name => params["name"], :author => params["author"], :employee_ids => employee_id })
+  @book = Book.create({ :name => name, :author => author, :employee_ids => employee_id })
   @books = Book.all()
   @employee = Employee.find(employee_id)
   erb(:employees)
@@ -49,6 +51,7 @@ end
 
 get("/books/:id") do
   @book = Book.find(params["id"])
+  @employees = Employee.all()
   erb(:books)
 end
 
@@ -56,5 +59,13 @@ delete("/books/:id") do
   @book = Book.find(params["id"])
   @book.destroy
   redirect("/")
+end
+
+patch("/books/:id") do
+  @book = Book.find(params["id"])
+  employee_ids = params.fetch("employee_ids")
+  @book.update({ :employee_ids => employee_ids })
+  @employees = Employee.all()
+  erb(:books)
 end
 

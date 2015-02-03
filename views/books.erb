@@ -1,7 +1,33 @@
 <h1><%= @book.name() %></h1>
+<h3> ~ <%= @book.author() %></h3>
+
+<% if @book.employees().any? %>
+  <h3>Recommended by</h3>
+  <% @book.employees().each do |employee| %>
+    <ul>
+      <li><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a></li>  
+    </ul>
+  <% end %>
+<% else %>
+<p>This book has not yet been receommended!</p>
+<% end %>
+
+<h4>Also recommended by</h4>
+  <form action="/books/<%= @book.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+      <% @employees.each() do |employee| %>
+        <div class="checkbox">
+        <input type="checkbox" name="employee_ids[]" value="<%= employee.id() %>"><%= employee.employee() %>    
+        </div>
+      <% end %>
+    <button type="submit">Add Employee</button>
+  </form>
+<br>
 
 <form action="/books/<%= @book.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
   
   <button type="submit" class="btn btn-sm btn-danger">Delete Book</button>
 </form>
+
+<a href="/">Back to Home Page</a>
