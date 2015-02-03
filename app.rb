@@ -33,8 +33,7 @@ end
 post("/add_books") do
   name = params.fetch("name")
   employee_id = params.fetch("employee_id")
-  @book = Book.create({ :name => name })
-  @book.update({ :employee_ids => employee_id })
+  @book = Book.create({ :name => name, :employee_ids => employee_id })
   @books = Book.all()
   @employee = Employee.find(employee_id)
   erb(:employees)
