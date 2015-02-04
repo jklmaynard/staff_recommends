@@ -51,7 +51,12 @@ end
 get("/books/:id") do
   @book = Book.find(params["id"])
   @employees = Employee.all()
+  @genres = Genre.all()
   erb(:books)
+end
+
+get("/genres/:id") do
+  erb(:genre_each)
 end
 
 delete("/books/:id") do
@@ -65,7 +70,17 @@ end
 get("/books/edit/:id") do
   @book = Book.find(params["id"])
   @employees = Employee.all()
+  @genres = Genre.all()
   erb(:books_edit)
+end
+
+post("/books/add_genre/:id") do 
+  @book = Book.find(params["id"])
+  genre_ids = params.fetch("genre_ids")
+  @book.update({ :genre_ids => genre_ids })
+  @genres = Genre.all()
+  @employees = Employee.all()
+  erb(:books)
 end
 
 patch("/books/edit/:id") do

@@ -1,5 +1,15 @@
 <h1><%= @book.name() %></h1>
-<h3> ~ <%= @book.author() %></h3>
+<h3> by <%= @book.author() %></h3>
+<h4> ~ Genre: </h4>
+<% if @book.genres().any? %>
+
+<% @book.genres().each do |genre| %>
+<p><a href="/genres/<%= genre.id() %>"><%= genre.genre() %></a></p>
+<% end %>
+<% else %>
+<p>No genres have yet been added to this book.</p>
+<% end %>
+
 
 <% if @book.employees().any? %>
   <h3>Recommended by</h3>
@@ -11,7 +21,6 @@
 <% else %>
 <p>This book has not yet been receommended!</p>
 <% end %>
-
 
 <a href="/books/edit/<%= @book.id() %>"><button type="submit" class="btn btn-sm btn-success">Edit Book</button></a>
 <br>
