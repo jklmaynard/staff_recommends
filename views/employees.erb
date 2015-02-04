@@ -11,12 +11,10 @@
 <% end %>
 <br>
 
-<br>
-
 <form action="/employees/<%= @employee.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
   
   <button type="submit" class="btn btn-sm btn-danger">Delete Employee</button>
-</form>
+</form><br>
 
 <a href="/">Return to Home Page</a>
