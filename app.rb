@@ -76,3 +76,17 @@ patch("/books/edit/:id") do
   erb(:books)
 end
 
+# /GENRES routes
+
+get("/genres") do
+  @genres = Genre.all()
+  erb(:genres)
+end
+
+post("/genre") do
+  genre = params.fetch("genre")
+  @genre = Genre.create({ :genre => genre })
+  @genres = Genre.all()
+  erb(:genres)
+end
+
