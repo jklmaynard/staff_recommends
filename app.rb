@@ -55,10 +55,6 @@ get("/books/:id") do
   erb(:books)
 end
 
-get("/genres/:id") do
-  erb(:genre_each)
-end
-
 delete("/books/:id") do
   @book = Book.find(params["id"])
   @book.destroy
@@ -104,4 +100,20 @@ post("/genre") do
   @genres = Genre.all()
   erb(:genres)
 end
+
+# /GENRES/each routes
+
+get("/genres/:id") do
+  @genre = Genre.find(params["id"])
+  erb(:genre_each)
+end
+
+delete("/genres/:id") do
+  @genre = Genre.find(params["id"])
+  @genre.destroy
+  @genres = Genre.all()
+  erb(:genres)
+end
+
+
 

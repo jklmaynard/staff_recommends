@@ -1,0 +1,19 @@
+<h1>This is the <%= @genre.genre() %> Genre Page!</h1>
+
+<h3>Here are some of the recommended books that fit this genre:</h3>
+
+<% if @genre.books().any? %>
+  <% @genre.books().each do |book| %>
+    <ul>
+      <li><a href="/books/<%= book.id() %>"><%= book.name() %> by <%= book.author() %></a></li>  
+    </ul>
+  <% end %>
+<% else %>
+  <p>No books have been added to this genre.</p>
+<% end %>
+
+<form action="/genres/<%= @genre.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  
+  <button type="submit" class="btn btn-sm btn-danger">Delete Genre</button>
+</form>
