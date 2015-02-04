@@ -24,20 +24,19 @@ post("/employee") do
   erb(:index)
 end
 
+post("/add_books") do
+  name = params.fetch("name")
+  author = params.fetch("author")
+  @book = Book.create({ :name => name, :author => author })
+  @books = Book.all()
+  @employees = Employee.all()
+  erb(:index)
+end
+
 # /EMPLOYEE/:id routes
 
 get("/employees/:id") do
   @employee = Employee.find(params["id"])
-  erb(:employees)
-end
-
-post("/add_books") do
-  name = params.fetch("name")
-  author = params.fetch("author")
-  employee_id = params.fetch("employee_id")
-  @book = Book.create({ :name => name, :author => author, :employee_ids => employee_id })
-  @books = Book.all()
-  @employee = Employee.find(employee_id)
   erb(:employees)
 end
 

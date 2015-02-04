@@ -19,6 +19,14 @@
 <h2> . . . Or . . . </h2>
 
 <h3> Go to the Books! </h3>
+<form action="/add_books" method="post">
+  <label for="name">Title</label>
+  <input type="text" name="name" id="name">
+  <label for="author">Author</label>
+  <input type="text" name="author" id="author">
+  <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
+</form>
+
 <ul>
   <% @books.each() do |book| %>
   <li style="margin: 5px auto;">

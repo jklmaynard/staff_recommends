@@ -10,14 +10,7 @@
   <p>No books have been added!</p>
 <% end %>
 <br>
-<form action="/add_books" method="post">
-  <input id="employee_id" name="employee_id" type="hidden" value="<%= @employee.id() %>">
-  <label for="name">Title</label>
-  <input type="text" name="name" id="name">
-  <label for="author">Author</label>
-  <input type="text" name="author" id="author">
-  <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
-</form>
+
 <br>
 
 <form action="/employees/<%= @employee.id() %>" method="post">
