@@ -60,10 +60,18 @@ delete("/books/:id") do
   redirect("/")
 end
 
-patch("/books/:id") do
+# /BOOKS/edit/:id routes
+
+get("/books/edit/:id") do
+  @book = Book.find(params["id"])
+  @employees = Employee.all()
+  erb(:books_edit)
+end
+
+patch("/books/edit/:id") do
   @book = Book.find(params["id"])
   employee_ids = params.fetch("employee_ids")
-  @book.update({ :employee_ids => employee_ids })
+  @book.update({ :publisher => params["publisher"], :copyright => params["copyright"], :employee_ids => employee_ids })
   @employees = Employee.all()
   erb(:books)
 end

@@ -1,0 +1,21 @@
+<h1> <%= @book.name() %> </h1>
+<h2> <%= @book.author() %></h2>
+<h3> Edit Book </h3>
+
+<form action="/books/edit/<%= @book.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="publisher">Publisher</label>
+  <input id="publisher" name="publisher" type="text">
+  <label for="copyright">Copyright</label>
+  <input id="copyright" name="copyright" type="text">
+ 
+
+<h3> Which of Your Staff Recommends This Book?</h3>
+
+      <% @employees.each() do |employee| %>
+        <div class="checkbox">
+        <input type="checkbox" name="employee_ids[]" value="<%= employee.id() %>"><%= employee.employee() %>    
+        </div>
+      <% end %>
+    <button type="submit">Update</button>
+ </form>
