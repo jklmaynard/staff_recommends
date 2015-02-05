@@ -52,6 +52,7 @@ get("/books/:id") do
   @book = Book.find(params["id"])
   @employees = Employee.all()
   @genres = Genre.all()
+  @comments = Comment.all()
   erb(:books)
 end
 
@@ -115,5 +116,22 @@ delete("/genres/:id") do
   erb(:genres)
 end
 
+# /COMMENTS routes
+
+get("/comments/:id") do
+  @employee = Employee.find(params["id"])
+  @books = Book.all()
+  erb(:employee_comment)
+end
+
+post("/comments/:id") do
+  book_id = params.fetch("book_id")
+  employee_id = params.fetch("employee_id")
+  comment = params.fetch("comment")
+  @comment = Comment.create({ :comment => comment, :book_id => book_id, :employee_id => employee_id })
+  @employee = Employee.find(params["id"])
+  @books = Book.all()
+  erb(:submission)
+end
 
 

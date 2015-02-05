@@ -15,7 +15,7 @@
   <% if @book.employees().any? %>
     <h3>Recommended by</h3>
     <% @book.employees().each do |employee| %>
-      <ul>
+      <ul style="list-style: none;">
         <li><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a></li>  
       </ul>
     <% end %>
@@ -23,6 +23,10 @@
   <p>This book has not yet been receommended!</p>
   <% end %>
 
+  <h3>What our staff has to say about this book</h3>
+  <
+  
+  
   <a href="/books/edit/<%= @book.id() %>"><button type="submit" class="btn btn-sm btn-success">Edit Book</button></a>
   <br>
   <br>
