@@ -123,6 +123,19 @@ get("/comments/:id") do
   erb(:employee_comment)
 end
 
+get("/comments/edit/:id") do
+  @comment = Comment.find(params["id"])
+  erb(:comment_edit)
+end
+
+delete("/comment/edit/:id") do
+  @comment = Comment.find(params["id"])
+  @comment.destroy
+  @employees = Employee.all()
+  @books = Book.all()
+  erb(:index)
+end
+
 post("/comments/:id") do
   book_id = params.fetch("book_id")
   employee_id = params.fetch("employee_id")
@@ -132,5 +145,7 @@ post("/comments/:id") do
   @books = Book.all()
   erb(:submission)
 end
+
+
 
 

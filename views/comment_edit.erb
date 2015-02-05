@@ -1,0 +1,5 @@
+<div class="container">
+  <form action="/comment/edit/<%= @comment.id()%>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-sm btn-danger">Delete Comment</button>
+</div>

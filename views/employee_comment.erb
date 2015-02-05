@@ -2,7 +2,7 @@
   <h1><%= @employee.employee() %>, Add a Comment!</h1>
 </div>
 <div class="container">
-    <form action="/comments/<%= @employee.id() %>" method="post">
+    <form action="/comments/<%= @employee.id() %>/edit" method="post">
       <label for="book_id">Select a Book</label><br>
       <select id="book_id" name="book_id" type="text">
         <% @books.each() do |book| %>
