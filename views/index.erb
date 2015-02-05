@@ -1,39 +1,42 @@
-<h1>The Wallace Books Staff Recommends Page!</h1>
+<div class="container">
+  <h1>The Wallace Books Staff Recommends Page!</h1>
+</div>
+<div class="container">
+  <form action="/employee" method="post">
+    <label for="name">Employee Name</label>
+    <input id="name" name="name" type="text">
 
-<form action="/employee" method="post">
-  <label for="name">Employee Name</label>
-  <input id="name" name="name" type="text">
-  
-  <button type="submit" class="btn btn-sm btn-primary">Add Employee</button>
-</form>
+    <button type="submit" class="btn btn-sm btn-primary">Add Employee</button>
+  </form>
 
-<ul>
-  <% @employees.each() do |employee| %>
+  <ul style="list-style: none;">
+    <% @employees.each() do |employee| %>
+      <li style="margin: 5px auto;">
+        <a href="/employees/<%= employee.id()%>"><button type="submit" class="btn btn-sm btn-primary">Profile</button></a>
+        <%= employee.employee() %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="container">
+  <h3> The Books! </h3>
+  <form action="/add_books" method="post">
+    <label for="name">Title</label>
+    <input type="text" name="name" id="name">
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author">
+    <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
+  </form>
+
+  <ul style="list-style: none;">
+    <% @books.each() do |book| %>
     <li style="margin: 5px auto;">
-      <a href="/employees/<%= employee.id()%>"><button type="submit" class="btn btn-sm btn-primary">Add Books</button></a>
-      <%= employee.employee() %>
+      <a href="/books/<%= book.id() %>"><button type = "submit" class="btn btn-sm btn-success">Edit</button></a>
+      <%= book.name() %>
     </li>
-  <% end %>
-</ul>
-
-<h2> . . . Or . . . </h2>
-
-<h3> Go to the Books! </h3>
-<form action="/add_books" method="post">
-  <label for="name">Title</label>
-  <input type="text" name="name" id="name">
-  <label for="author">Author</label>
-  <input type="text" name="author" id="author">
-  <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
-</form>
-
-<ul>
-  <% @books.each() do |book| %>
-  <li style="margin: 5px auto;">
-    <a href="/books/<%= book.id() %>"><button type = "submit" class="btn btn-sm btn-success">Edit</button></a>
-    <%= book.name() %>
-  </li>
-  <% end %>
-</ul>
-
-<a href="/genres"><button type="submit" class="btn btn-sm btn-success">Go to Genres</button></a>
+    <% end %>
+  </ul>
+</div>
+<div class="container">
+  <a href="/genres"><button type="submit" class="btn btn-sm btn-success">Go to Genres</button></a>
+</div>

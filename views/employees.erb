@@ -1,20 +1,23 @@
-<h1>Here are the books <%= @employee.employee() %> recommends!</h1>
 
-<% if @employee.books().any? %>
-  <% @employee.books().each() do |book| %>
-    <ul>
-      <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %></li>  
-    </ul>
+<div class="container">
+  <h1>Here are the books <%= @employee.employee() %> recommends!</h1>
+
+  <% if @employee.books().any? %>
+    <% @employee.books().each() do |book| %>
+      <ul>
+        <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %></li>  
+      </ul>
+    <% end %>
+  <% else %>
+    <p>No books have been added!</p>
   <% end %>
-<% else %>
-  <p>No books have been added!</p>
-<% end %>
-<br>
+  <br>
 
-<form action="/employees/<%= @employee.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-  
-  <button type="submit" class="btn btn-sm btn-danger">Delete Employee</button>
-</form><br>
+  <form action="/employees/<%= @employee.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
 
-<a href="/">Return to Home Page</a>
+    <button type="submit" class="btn btn-sm btn-danger">Delete Employee</button>
+  </form><br>
+
+  <a href="/">Return to Home Page</a>
+</div>
