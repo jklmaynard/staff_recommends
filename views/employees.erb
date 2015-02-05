@@ -5,7 +5,13 @@
   <% if @employee.books().any? %>
     <% @employee.books().each() do |book| %>
       <ul>
-        <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %></li>  
+        <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %><br>
+          <% @employee.comments().each do |comment| %>
+          <% if comment.book_id == book.id() %>
+          "<%= comment.comment() %>"
+          <% end %>
+          <% end %>
+        </li>  
       </ul>
     <% end %>
   <% else %>

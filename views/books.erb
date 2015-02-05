@@ -28,7 +28,7 @@
   <% @book.comments().each do |comment| %>
     <ul style="list-style: none;">
       <li>
-        <%= comment.employee_id %> says, <br> "<%= comment.comment() %>"
+        <%= comment.employee_id() %> says, <br> "<%= comment.comment() %>"
       </li>  
     </ul>
   <% end %>
