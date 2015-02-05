@@ -52,7 +52,6 @@ get("/books/:id") do
   @book = Book.find(params["id"])
   @employees = Employee.all()
   @genres = Genre.all()
-  @comments = Comment.all()
   erb(:books)
 end
 

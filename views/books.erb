@@ -23,8 +23,18 @@
   <p>This book has not yet been receommended!</p>
   <% end %>
 
-  <h3>What our staff has to say about this book</h3>
-  <
+  <h3>What staff has to say about this book</h3>
+  <% if @book.comments().any? %>
+  <% @book.comments().each do |comment| %>
+    <ul style="list-style: none;">
+      <li>
+        <%= comment.employee_id %> says, <br> "<%= comment.comment() %>"
+      </li>  
+    </ul>
+  <% end %>
+  <% else %>
+  <p>No staff has left a comment.</p>
+  <% end %>
   
   
   <a href="/books/edit/<%= @book.id() %>"><button type="submit" class="btn btn-sm btn-success">Edit Book</button></a>
