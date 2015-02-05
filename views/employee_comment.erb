@@ -12,6 +12,7 @@
       <label for="comment">Type your Comment Here</label>
         <textarea name="comment" rows="5" id="comment" class="form-control"></textarea>
         <input name="employee_id" type="hidden" value="<%= @employee.id() %>">
+        <input name="employee" type="hidden" value="<%= @employee.employee() %>">
       <button type="submit" class="btn btn-sm btn-success">Add a Comment!</button>
   </form>
 </div>
