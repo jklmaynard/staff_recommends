@@ -128,7 +128,7 @@ post("/comments/:id") do
   employee_id = params.fetch("employee_id")
   comment = params.fetch("comment")
   @comment = Comment.create({ :comment => comment, :book_id => book_id, :employee_id => employee_id })
-  @employee = Employee.find(params["id"])
+  @employee = Employee.find(params["id"]) 
   @books = Book.all()
   erb(:submission)
 end
