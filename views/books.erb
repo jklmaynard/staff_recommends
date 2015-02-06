@@ -16,19 +16,13 @@
     <h3>Recommended by</h3>
     <% @book.employees().each do |employee| %>
       <ul style="list-style: none;">
-        <li><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a></li>  
-      </ul>
-    <% end %>
-  <% else %>
-  <p>This book has not yet been receommended!</p>
-  <% end %>
 
-  <h3>What staff has to say about this book</h3>
-  <% if @book.comments().any? %>
-  <% @book.comments().each do |comment| %>
-    <ul style="list-style: none;">
-      <li>
-        <%= comment.employee_id() %> says, <br> "<%= comment.comment() %>"
+        <li><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a><br>
+        <% @book.comments().each do |comment| %>
+        <% if comment.employee_id == employee.id() %>
+        "<%= comment.comment() %>"
+        <% end %>
+        <% end %>
       </li>  
     </ul>
   <% end %>
