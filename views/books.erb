@@ -14,9 +14,8 @@
 
   <% if @book.employees().any? %>
     <h3>Recommended by</h3>
-    <% @book.employees().each do |employee| %>
+  <% @book.employees().order("employee").each do |employee| %>
       <ul style="list-style: none;">
-
         <li><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a><br>
         <% @book.comments().each do |comment| %>
         <% if comment.employee_id == employee.id() %>

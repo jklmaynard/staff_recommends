@@ -10,7 +10,7 @@
   </form>
 
   <ul style="list-style: none;">
-    <% @employees.each() do |employee| %>
+    <% @employees.order("employee").each() do |employee| %>
       <li style="margin: 5px auto;">
         <a href="/employees/<%= employee.id()%>"><button type="submit" class="btn btn-sm btn-primary">Profile</button></a>
         <%= employee.employee() %>
@@ -29,7 +29,7 @@
   </form>
 
   <ul style="list-style: none;">
-    <% @books.each() do |book| %>
+    <% @books.order("name").each() do |book| %>
     <li style="margin: 5px auto;">
       <a href="/books/<%= book.id() %>"><button type = "submit" class="btn btn-sm btn-success">Edit</button></a>
       <%= book.name() %>

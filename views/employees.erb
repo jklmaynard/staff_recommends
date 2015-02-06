@@ -3,7 +3,7 @@
   <h1>Here are the books <%= @employee.employee() %> recommends!</h1>
 
   <% if @employee.books().any? %>
-    <% @employee.books().each() do |book| %>
+  <% @employee.books().order("name").each() do |book| %>
       <ul>
         <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %><br>
           <% @employee.comments().each do |comment| %>
