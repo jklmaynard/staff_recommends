@@ -2,25 +2,18 @@
   <h1><%= @employee.employee() %>, Add a Comment!</h1>
 </div>
 <div class="container">
-    <form action="/comments/<%= @employee.id() %>/edit" method="post">
+    <form action="/comments/<%= @employee.id() %>" method="post">
       <label for="book_id">Select a Book</label><br>
       <select id="book_id" name="book_id" type="text">
-        <% @books.each() do |book| %>
+        <% @employee.books().order("name").each() do |book| %>
         <option value="<%= book.id() %>"> <%= book.name() %></option>
         <% end %>
       </select><br>
       <label for="comment">Type your Comment Here</label>
-        <textarea name="comment" rows="5" id="comment" class="form-control"></textarea>
+        <textarea name="comment" rows="5" id="comment" class="form-control"></textarea><br>
         <input name="employee_id" type="hidden" value="<%= @employee.id() %>">
       <button type="submit" class="btn btn-sm btn-success">Add a Comment!</button>
-  </form>
-</div>
+  </form><br>
 
-<div class="container">
-</div>
-    
-    
-    
-<div class="container">
-  <a href="/employees/<%= @employee.id() %>">Back</a>
+  <a href="/employees/<%= @employee.id() %>"><button type="submit" class="btn btn-sm btn-primary">Back</button></a>
 </div>
