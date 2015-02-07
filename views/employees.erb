@@ -1,14 +1,14 @@
 
-<div class="container">
-  <h1>Here are the books <%= @employee.employee() %> recommends!</h1>
-
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
+  <h1>The Recommendation Page of <%= @employee.employee() %></h1>
+  <h3>The List:</h3>
   <% if @employee.books().any? %>
   <% @employee.books().order("name").each() do |book| %>
-      <ul>
+      <ul style="list-style: none;">
         <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %><br>
           <% @employee.comments().each do |comment| %>
           <% if comment.book_id == book.id() %>
-          "<%= comment.comment() %>"<a href="/comments/edit/<%= comment.id() %>"><button type="submit" class="btn btn-xs btn-primary" style="margin: 0 0 0 5px;">Edit</button></a>
+          "<%= comment.comment() %>"<a href="/comments/edit/<%= comment.id() %>"><button type="submit" class="btn btn-xs" style="background-color: #ffffcc; margin: 0 0 0 5px;">Edit</button></a>
           <% end %>
           <% end %>
         </li>  
@@ -25,6 +25,6 @@
 
     <button type="submit" class="btn btn-sm btn-danger">Delete Employee</button>
   </form><br>
+  <a href="/"><button type="submit" class="btn btn-sm" style="background-color: #ffffcc; margin: 0 0 25px 0;">Back to Home Page</button></a>
 
-  <a href="/">Return to Home Page</a>
 </div>
