@@ -8,7 +8,7 @@
         <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %><br>
           <% @employee.comments().each do |comment| %>
           <% if comment.book_id == book.id() %>
-          "<%= comment.comment() %>"<a href="/comments/edit/<%= comment.id() %>"><button type="submit" class="btn btn-xs" style="background-color: #ffffcc; margin: 0 0 0 5px;">Edit</button></a>
+          "<%= comment.comment() %>"<a href="/comments/edit/<%= comment.id() %>"><button type="submit" class="btn btn-xs" style="background-color: #ffffcc; margin: 0 0 0 5px;">Edit</button></a><br>
           <% end %>
           <% end %>
         </li>  

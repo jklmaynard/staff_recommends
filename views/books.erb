@@ -20,7 +20,7 @@
         <li style=""><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a><br>
         <% @book.comments().each do |comment| %>
         <% if comment.employee_id == employee.id() %>
-        "<%= comment.comment() %>"
+        "<%= comment.comment() %>"<br>
         <% end %>
         <% end %>
       </li>  

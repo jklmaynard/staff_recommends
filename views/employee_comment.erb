@@ -1,7 +1,6 @@
-<div class="container">
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
   <h1><%= @employee.employee() %>, Add a Comment!</h1>
-</div>
-<div class="container">
+
     <form action="/comments/<%= @employee.id() %>" method="post">
       <label for="book_id">Select a Book</label><br>
       <select id="book_id" name="book_id" type="text">
@@ -15,5 +14,5 @@
       <button type="submit" class="btn btn-sm btn-success">Add a Comment!</button>
   </form><br>
 
-  <a href="/employees/<%= @employee.id() %>"><button type="submit" class="btn btn-sm btn-primary">Back</button></a>
+  <a href="/employees/<%= @employee.id() %>"><button type="submit" class="btn btn-sm btn-primary" style="margin: 0 0 25px 0;">Back</button></a>
 </div>
