@@ -4,7 +4,7 @@
   <h3>Here are some of the recommended books that fit this genre:</h3>
 
   <% if @genre.books().any? %>
-    <% @genre.books().each do |book| %>
+  <% @genre.books().order("name").each do |book| %>
       <ul style="list-style: none;">
         <li><a href="/books/<%= book.id() %>"><%= book.name() %> by <%= book.author() %></a></li>  
       </ul>
