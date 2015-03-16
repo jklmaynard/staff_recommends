@@ -1,0 +1,25 @@
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
+<h1>Welcome to the GENRES page!</h1>
+  <br>
+  <p> Here you can add new genres, and tag particular books with particular genres, to let your customers know what kind of book they are looking at. Let's get started!</p>
+
+  <form action="/genre" method="post">
+    <label for="genre">Genre Name</label>
+    <input id="genre" name="genre" type="text">
+
+    <button type="submit" class="btn btn-sm btn-primary">Add Genre</button>
+  </form>
+
+  <% if @genres.any? %>
+    <p>Here are you genres:</p>
+  <% @genres.order("genre").each() do |genre| %>
+      <ul style="margin: 5px auto;">
+        <li><a href="/genres/<%= genre.id() %>"><%= genre.genre() %></a></li>
+      </ul>
+  <% end %>
+  <% else %>
+  <p>You have no genres yet!</p>
+  <% end %>
+  <br>
+  <a href="/"><button type="submit" class="btn btn-sm btn-primary" style="margin: 0 0 25px 0;">Back to Home Page</button></a>
+</div>

@@ -1,0 +1,8 @@
+<div class="container" style="margin: 200px auto 0; text-align: center;">
+  
+  <form action="/comment/edit/<%= @comment.id()%>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-sm btn-danger">Delete Comment</button>
+  </form> <br>
+    <a href="/"><button type="submit" class="btn btn-sm btn-primary">Back to Home Page</button></a>
+</div>

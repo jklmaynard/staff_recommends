@@ -1,0 +1,30 @@
+
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
+  <h1>The Recommendation Page of <%= @employee.employee() %></h1>
+  <h3>The List:</h3>
+  <% if @employee.books().any? %>
+  <% @employee.books().order("name").each() do |book| %>
+      <ul style="list-style: none;">
+        <li><a href="/books/<%= book.id() %>"><%= book.name() %></a> by <%= book.author() %><br>
+          <% @employee.comments().each do |comment| %>
+          <% if comment.book_id == book.id() %>
+          "<%= comment.comment() %>"<a href="/comments/edit/<%= comment.id() %>"><button type="submit" class="btn btn-xs" style="background-color: #ffffcc; margin: 0 0 0 5px;">Edit</button></a><br>
+          <% end %>
+          <% end %>
+        </li>  
+      </ul>
+    <% end %>
+  <% else %>
+    <p>No books have been added!</p>
+  <% end %>
+  <br>
+  <a href="/comments/<%= @employee.id() %>"><button type="submit" class="btn btn-sm btn-primary">Add a Comment</button></a>
+  <br><br>
+  <form action="/employees/<%= @employee.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+
+    <button type="submit" class="btn btn-sm btn-danger">Delete Employee</button>
+  </form><br>
+  <a href="/"><button type="submit" class="btn btn-sm" style="background-color: #ffffcc; margin: 0 0 25px 0;">Back to Home Page</button></a>
+
+</div>

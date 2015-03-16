@@ -1,0 +1,47 @@
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
+  <h1><%= @book.name() %></h1>
+  <h3> by <%= @book.author() %></h3>
+  <% if @book.genres().any? %>
+    <% @book.genres().each do |genre| %>
+      <ul style="list-style: none; display: inline-block;">
+         <li>
+        <a href="/genres/<%= genre.id() %>"><%= genre.genre() %></a>
+          </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p>No genres have yet been added to this book.</p>
+  <% end %>
+
+  <% if @book.employees().any? %>
+    <h3>Recommended by</h3>
+  <% @book.employees().order("employee").each do |employee| %>
+      <ul style="list-style: none;">
+        <li style=""><a href="/employees/<%= employee.id() %>"><%= employee.employee() %></a><br>
+        <% @book.comments().each do |comment| %>
+        <% if comment.employee_id == employee.id() %>
+        "<%= comment.comment() %>"<br>
+        <% end %>
+        <% end %>
+      </li>  
+    </ul>
+  <% end %>
+  <% else %>
+  <p>No staff has left a comment.</p>
+  <% end %><br>
+
+ 
+  <a href="/books/edit/<%= @book.id() %>"><button type="submit" class="btn btn-sm btn-success">Edit Book</button></a>
+  <br><br>
+  
+  <form action="/books/<%= @book.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-sm btn-danger">Delete Book</button>
+  </form><br>
+
+  <a href="/"><button type="submit" class="btn btn-sm btn-primary" style="margin: 0 0 25px 0;">Back to Home Page</button></a><br>
+</div>
+  
+  
+  
+  

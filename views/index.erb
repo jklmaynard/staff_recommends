@@ -1,0 +1,39 @@
+<div class="container" style="background-color: #ffffcc; margin: 75px auto; max-width: 60%;">
+  <h1>The Wallace Books Staff Recommends Page!</h1>
+
+  <form action="/employee" method="post">
+    <label for="name">Employee Name</label>
+    <input id="name" name="name" type="text">
+
+    <button type="submit" class="btn btn-sm btn-primary">Add Employee</button>
+  </form>
+
+  <ul style="list-style: none;">
+    <% @employees.order("employee").each() do |employee| %>
+      <li style="margin: 5px auto;">
+        <a href="/employees/<%= employee.id()%>"><button type="submit" class="btn btn-sm btn-primary">Profile</button></a>
+        <%= employee.employee() %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3> The Books! </h3>
+  <form action="/add_books" method="post">
+    <label for="name">Title</label>
+    <input type="text" name="name" id="name">
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author">
+    <button type="submit" class="btn btn-sm bltn-primary">Add Book!</button>
+  </form>
+
+  <ul style="list-style: none;">
+    <% @books.order("name").each() do |book| %>
+    <li style="margin: 5px auto;">
+      <a href="/books/<%= book.id() %>"><button type = "submit" class="btn btn-sm btn-success">Edit</button></a>
+      <%= book.name() %>
+    </li>
+    <% end %>
+  </ul>
+
+  <a href="/genres"><button type="submit" class="btn btn-sm btn-success" style="margin: 0 0 25px 0;">Go to Genres</button></a>
+</div>
